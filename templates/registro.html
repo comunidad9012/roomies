@@ -1,0 +1,71 @@
+{% extends 'nav_bar.html' %}
+{% block title %} 
+Registro 
+{% endblock %}
+{% block nav_bar %}
+  
+
+      
+        <section id="container">
+            <div class="welcome-message">
+                <p class="smaller">Bienvenido!</p>
+                <p class="small">Ingresa tus datos para registrarte</p>
+                <p class="tiny">Si ya tienes una cuenta, ingresa</p>
+              </div>
+              
+            <div>
+                <form class="custom-form">
+                    <div class="form-section">
+                       
+                      <label for="nombre">Nombre</label>
+                      <input type="text" id="nombre" name="nombre" />
+                    </div>
+
+                    <div class="form-section">
+                        <label for="apellido">Apellido</label>
+                        <input type="text" id="apellido" name="apellido" />
+                      </div>
+
+                      
+                    <div class="form-section">
+                      <label for="correo">Correo</label>
+                      <input type="correo" id="correo" name="correo" />
+                    </div>
+                  
+                    <div class="form-section">
+                      <label for="edad">Edad</label>
+                      <input type="number" id="edad" name="edad" />
+                    </div>
+
+                    <div class="form-section">
+                        <label for="nacionalidad">Nacionalidad</label>
+                        <input type="text" id="nacionalidad" name="nacionalidad" />
+                      </div>
+
+                      <div class="form-section">
+                        <label for="fecha-de-nacimiento">Fecha de nacimiento</label>
+                        <input type="date" id="fecha-de-nacimiento" name="fecha-de-nacimiento" />
+                      </div>
+
+                       <div class="form-section">
+                        <label for="genero">Género</label>
+                        <select class= "cualquiera" id="genero" name="genero">
+                            <option value="" disabled selected hidden>Selecciona un género</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="femenino">Femenino</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                      </div>
+                  
+                  
+                    <!-- Otros campos del formulario -->
+                  
+                    <div class="form-section">
+                      <button type="submit">Enviar</button>
+                    </div>
+                  </form>
+                  
+            </div>
+        </section>
+<style>{% include "style2.css" %}</style>
+{% endblock %}

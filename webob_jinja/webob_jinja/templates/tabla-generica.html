@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+<!-- prettier-ignore -->
+{% block title %}Tabla Generica {% endblock %}
+<!-- prettier-ignore -->
+{% block base_body %}
+<!--
+Cuando usamos la etiqueta 'block' y el nombre de blocque podemos
+introducir codigo en las plantillas que extiende la plantilla actual.
+
+En este caso, la plantilla actual, extiente a 'base.html', y al usar
+block title  y  block base_body  podemos poner contenido
+en esa parte de la plantilla extentida, sin tener que copiar todo lo que esta en
+base.html una y otra vez!
+-->
+
+<form class="d-flex" method="POST">
+  <input
+    class="form-control me-2"
+    type="text"
+    placeholder="Buscar..."
+    aria-label="Search"
+    name="consulta"
+  />
+  <button class="btn btn-info" type="submit">Buscar</button>
+</form>
+
+<div class="container-fluid my-4">
+  <a href="#"
+    ><button
+      class="btn btn-info mb-3 w-100"
+      data-toggle="tooltip"
+      data-placement="top"
+      title="Crea un nuevo {{resource}}"
+    >
+      Crear nuevo registro
+    </button></a
+  >
+
+  <!-- la variable data la recibe jinja cuando utilizamos render template -->
+  <!-- en este caso, si hay datos, hacer una tabla, si no, decir que no hay datos -->
+  {% if data %}
+  <div class="table-responsive-lg mt-5">
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr>
+          <!-- 
+            En mi caso, la variable 'data' es una lista que contiene diccionarios,
+            por ende, para obtener los nombres de cada columna necesito conseguir
+            las keys o llaves de los diccionarios (todos los diccionarios tienen las mismas llaves)
+            debo obtenerlos mediante el método .keys() de uno de los elementos de la tabla
+          -->
+          {% for key in data[0].keys() %}
+          <!--
+            por cada key, jinja2 renderizara un elemento html
+            <th>
+          -->
+          <th class="text-center">{{ key }}</th>
+          {% endfor %}
+          <!-- acciones esta fuera del loop porque no es una llave de diccionario -->
+          <th class="text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--
+        ahora, por cada  elemento (en este caso diccionario) de la lista
+        crear un elemento <tr> 'table row'
+        -->
+        {% for row in data %}
+        <tr>
+          <!--
+            Obtener los valores del diccionario corriente
+          -->
+          {% for value in row.values() %}
+          <!-- y renderizarlos como <td> 'table data' o 'table cell' -->
+          <td class="text-center">{{ value }}</td>
+          {% endfor %}
+          <!-- Estos son los botones que apareceran en la columna acciones -->
+          <td class="d-flex justify-content-between align-items-center">
+            <a href="#">
+              <div class="btn btn-warning btn-sm">
+                <img
+                  src="https://github.com/ger-rinaldi/promanager/blob/proyect_routes/app/static/setting.png?raw=1"
+                  alt=""
+                  style="width: 16px; height: 16px"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Modificar"
+                />
+              </div>
+            </a>
+            <a href="#">
+              <div class="btn btn-info btn-sm">
+                <img
+                  src="https://github.com/ger-rinaldi/promanager/blob/proyect_routes/app/static/view.png?raw=1"
+                  alt=""
+                  style="width: 16px; height: 16px"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Ver detalles"
+                />
+              </div>
+            </a>
+            <a href="#">
+              <div class="btn btn-info btn-sm">
+                <img
+                  src="https://github.com/ger-rinaldi/promanager/blob/proyect_routes/app/static/recycle-bin.png?raw=1"
+                  alt=""
+                  style="width: 16px; height: 16px"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Eliminar"
+                />
+              </div>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <h1>No hay registros.</h1>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}
