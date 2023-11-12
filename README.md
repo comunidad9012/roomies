@@ -50,3 +50,4 @@ Con la configuración actual Jinja2 no puede servir archivos estáticos, un tem�
 
 106 src="https://github.com/ger-rinaldi/promanager/blob/proyect_routes/app/static/recycle-bin.png?raw=1"
 ```
+echo "# roomies" 
