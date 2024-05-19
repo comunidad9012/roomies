@@ -2,6 +2,8 @@ import sqlite3
 from db import get_conn_n_cursor
 from wsgi_app import Wsgiclass, render_template
 from webob import Request, Response
+from webob.exc import HTTPFound
+
 app = Wsgiclass()
 
 
@@ -32,18 +34,20 @@ def register(request: Request, response: Response):
         conn = sqlite3.connect('roomies.sql')
         cursor = conn.cursor()
         nombre = form_data['nombre']
-        apellido = form_data['apellido']
+        contraseña = form_data['contraseña']
         correo = form_data['correo']
         edad = form_data['edad']
-        nacionalidad = form_data['nacionalidad']
-        fecha_nacimiento = form_data['fecha-de-nacimiento']
+        ocupacion = form_data['ocupacion']
         genero = form_data['genero']
 
-        cursor.execute("INSERT INTO roomies (nombre, apellido, correo, edad, nacionalidad, fecha_nacimiento, genero) VALUES (?, ?, ?, ?, ?, ?, ?)",
-                                            (nombre, apellido, correo, edad, nacionalidad, fecha_nacimiento, genero))
-        
+        cursor.execute("INSERT INTO roomies (nombre, correo, edad, ocupacion,contraseña, genero) VALUES (?, ?, ?, ?, ?, ?)",
+                                            (nombre, correo, edad, ocupacion,contraseña, genero))
         conn.commit()
         conn.close()
+
+        # Redirige al usuario a la ruta "/usuarios" después de guardar los datos
+        raise HTTPFound(location='/usuarios')  # Esto realizará la redirección
+    
     html_respuesta = render_template(register_template)
     response.text = html_respuesta["text"]
     response.content_type = html_respuesta["type"]

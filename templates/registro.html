@@ -15,21 +15,21 @@ Registro
               
             <div>
                 <form class="custom-form">
-                    <div class="form-section">
-                       
+                    <div class="form-section"> 
                       <label for="nombre">Nombre</label>
                       <input type="text" id="nombre" name="nombre" />
                     </div>
 
-                    <div class="form-section">
-                        <label for="apellido">Apellido</label>
-                        <input type="text" id="apellido" name="apellido" />
-                      </div>
+                    <div class="form-section"> 
+                      <label for="contraseña">Contraseña</label>
+                      <input type="password" id="contraseña" name="contraseña" />
+                  </div>
+                  
 
                       
                     <div class="form-section">
                       <label for="correo">Correo</label>
-                      <input type="correo" id="correo" name="correo" />
+                      <input type="email" id="correo" name="correo" />
                     </div>
                   
                     <div class="form-section">
@@ -38,16 +38,11 @@ Registro
                     </div>
 
                     <div class="form-section">
-                        <label for="nacionalidad">Nacionalidad</label>
-                        <input type="text" id="nacionalidad" name="nacionalidad" />
+                        <label for="ocupacion">Ocupacion</label>
+                        <input type="text" id="ocupacion" name="ocupacion" />
                       </div>
 
                       <div class="form-section">
-                        <label for="fecha-de-nacimiento">Fecha de nacimiento</label>
-                        <input type="date" id="fecha-de-nacimiento" name="fecha-de-nacimiento" />
-                      </div>
-
-                       <div class="form-section">
                         <label for="genero">Género</label>
                         <select class= "cualquiera" id="genero" name="genero">
                             <option value="" disabled selected hidden>Selecciona un género</option>
@@ -56,8 +51,7 @@ Registro
                             <option value="otro">Otro</option>
                         </select>
                       </div>
-                  
-                  
+
                     <!-- Otros campos del formulario -->
                   
                     <div class="form-section">
@@ -67,5 +61,5 @@ Registro
                   
             </div>
         </section>
-<style>{% include "style2.css" %}</style>
+
 {% endblock %}
